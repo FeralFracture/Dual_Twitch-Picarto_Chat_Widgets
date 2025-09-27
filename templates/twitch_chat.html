@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Twitch Chat Widget</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/twitch_chat.css') }}"
+    />
+    <!-- Socket.IO -->
+    <script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
+  </head>
+  <body>
+    <div id="chat-container"></div>
+    <script src="{{ url_for('static', filename='javascript/twitch_message_handler.js') }}"></script>
+  </body>
+</html>

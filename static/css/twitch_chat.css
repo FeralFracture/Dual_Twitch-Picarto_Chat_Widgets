@@ -1,0 +1,48 @@
+body,
+html {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#chat-container {
+    --max-messages: 22;
+    --message-lifetime:20000;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 0.5em;
+    padding: 1.25em 0.25em;
+    box-sizing: border-box;
+}
+
+.message {
+    background: rgba(0, 0, 0, 0.95);
+    /* semi-transparent box */
+    color: white;
+    padding: 0.6em;
+    border-radius: 0.5em;
+    font-size: 1em;
+    max-width: 100%;
+    width:auto;
+    opacity: 0;
+    transform: translateY(1.25em);
+    transition: all 0.5s ease-out;
+    word-wrap: break-word;
+}
+
+.message.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.message.disappear {
+    opacity: 0;
+    transform: translateY(-1.25em);
+    transition: all 0.35s ease-in;
+}
