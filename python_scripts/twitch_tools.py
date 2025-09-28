@@ -58,6 +58,10 @@ class TwitchConnector(Connector):
                 }
                 for badge_set in data["data"]
             }
+        elif res.status_code == 401:
+            print("refreshing OAuth Token...")
+            self.refresh_oauth_tokens()
+            
 
     def start(self):
         threading.Thread(target=self._run, daemon=True).start()
@@ -74,7 +78,7 @@ class TwitchConnector(Connector):
                 ws.send(f"PASS oauth:{config.TWITCH_CHAT_OAUTH}")
                 ws.send(f"NICK {config.TWITCH_USERNAME}")
                 ws.send(f"JOIN #{config.TWITCH_CHANNEL}")
-                print("Connected to Twitch IRC")
+                print("Connecting to Twitch IRC...")
 
                 while True:
                     msg = ws.recv()
